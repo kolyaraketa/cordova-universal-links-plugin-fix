@@ -108,7 +108,7 @@ function injectPreferences(currentEntitlements, pluginPreferences) {
  * @return {Object} associated-domains dictionary content
  */
 function generateAssociatedDomainsContent(pluginPreferences) {
-  var domainsList = [];
+  var domainsList = ['webcredentials:app.goodcrypto.app'];
 
   // generate list of host links
   pluginPreferences.hosts.forEach(function(host) {
