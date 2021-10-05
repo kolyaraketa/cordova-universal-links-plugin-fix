@@ -97,6 +97,7 @@ function injectPreferences(currentEntitlements, pluginPreferences) {
   var content = generateAssociatedDomainsContent(pluginPreferences);
 
   newEntitlements[ASSOCIATED_DOMAINS] = content;
+  newEntitlements['com.apple.developer.authentication-services.autofill-credential-provider'] = true
 
   return newEntitlements;
 }
