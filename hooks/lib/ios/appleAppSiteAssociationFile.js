@@ -67,7 +67,7 @@ function createNewAssociationFiles(pluginPreferences) {
     teamId = IOS_TEAM_ID;
   }
 
-  pluginPreferences.hosts.forEach(function(host) {
+ pluginPreferences.hosts.ul.forEach(function(host) {
     var content = generateFileContentForHost(host, teamId);
     saveContentToFile(host.name, content);
   });
@@ -90,12 +90,14 @@ function generateFileContentForHost(host, teamId) {
   }
 
   return {
-    "applinks": {
-      "apps": [],
-      "details": [{
-        "appID": appID,
-        "paths": paths
-      }]
+   applinks: {
+      apps: [],
+      details: [
+        {
+          appID: appID,
+          paths: paths
+        }
+      ]
     }
   };
 }
