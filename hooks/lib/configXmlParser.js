@@ -46,7 +46,7 @@ function readPreferences(cordovaContext) {
       wc: []
     },
     iosTeamId: iosTeamId
-}
+  }
   var wcXmlPreferences = configXml.widget['webcredentials'];
   if (wcXmlPreferences == null || wcXmlPreferences.length == 0) {
     console.warn('<webcredentials> tag is not set in the config.xml. Webcredentials plugin is not going to work.');
@@ -61,6 +61,7 @@ function readPreferences(cordovaContext) {
   preferences.hosts.wc = wcHosts;
 
   return preferences;
+}
 
 // endregion
 
