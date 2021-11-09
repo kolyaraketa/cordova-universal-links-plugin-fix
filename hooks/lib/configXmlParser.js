@@ -35,16 +35,32 @@ function readPreferences(cordovaContext) {
   var xmlPreferences = ulXmlPreferences[0];
 
   // read hosts
-  var hosts = constructHostsList(xmlPreferences);
+  var ulHosts = constructHostsList(xmlPreferences);
 
   // read ios team ID
   var iosTeamId = getTeamIdPreference(xmlPreferences);
 
-  return {
-    'hosts': hosts,
-    'iosTeamId': iosTeamId
-  };
+  var preferences = {
+    hosts: {
+      ul: ulHosts,
+      wc: []
+    },
+    iosTeamId: iosTeamId
 }
+  var wcXmlPreferences = configXml.widget['webcredentials'];
+  if (wcXmlPreferences == null || wcXmlPreferences.length == 0) {
+    console.warn('<webcredentials> tag is not set in the config.xml. Webcredentials plugin is not going to work.');
+    return preferences;
+  }
+
+  wcPreferences = wcXmlPreferences[0];
+
+  // read hosts
+  var wcHosts = constructHostsList(wcPreferences);
+
+  preferences.hosts.wc = wcHosts;
+
+  return preferences;
 
 // endregion
 
